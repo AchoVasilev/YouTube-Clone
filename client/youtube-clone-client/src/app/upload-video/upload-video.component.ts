@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FileSystemFileEntry, NgxFileDropEntry } from 'ngx-file-drop';
+import { VideoService } from '../service/video.service';
 
 @Component({
   selector: 'app-upload-video',
@@ -7,7 +8,12 @@ import { FileSystemFileEntry, NgxFileDropEntry } from 'ngx-file-drop';
   styleUrls: ['./upload-video.component.css']
 })
 export class UploadVideoComponent {
+
   public files: NgxFileDropEntry[] = [];
+  public fileUploaded = false;
+  private fileEntry: FileSystemFileEntry | undefined;
+
+  constructor(private videoService: VideoService) { }
 
   public dropped(files: NgxFileDropEntry[]) {
     this.files = files;
@@ -15,10 +21,12 @@ export class UploadVideoComponent {
     for (const droppedFile of files) {
 
       if (droppedFile.fileEntry.isFile) {
-        const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+        this.fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
 
-        fileEntry.file((file: File) => {
+        this.fileEntry.file((file: File) => {
           console.log(droppedFile.relativePath, file);
+
+          this.fileUploaded = true;
         })
       } else {
         const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
@@ -29,11 +37,21 @@ export class UploadVideoComponent {
 
   public fileOver(event: any) {
     console.log(event);
-
   }
 
   public fileLeave(event: any) {
     console.log(event);
+  }
 
+  uploadVideo() {
+    if (this.fileEntry !== undefined) {
+
+      this.fileEntry.file(file => {
+        this.videoService.uploadVideo(file)
+          .subscribe(data => {
+            console.log("Success");
+          });
+      });
+    }
   }
 }
