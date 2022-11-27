@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="966bfe3b-fe26-4c17-bb99-fd09bcb0f13b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/repository/VideoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/config/WebMvcConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/controller/VideoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/controller/VideoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/service/FileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/service/S3Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/service/S3Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/service/VideoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/service/VideoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +43,13 @@
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -137,7 +136,7 @@
       <updated>1669322107234</updated>
       <workItem from="1669322109521" duration="2344000" />
       <workItem from="1669325422671" duration="546000" />
-      <workItem from="1669571039897" duration="413000" />
+      <workItem from="1669571039897" duration="1768000" />
     </task>
     <servers />
   </component>
