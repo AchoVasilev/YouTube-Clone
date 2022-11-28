@@ -20,6 +20,12 @@ public class VideoController {
         this.videoService.uploadVideo(file);
     }
 
+    @PostMapping("/thumbnail")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void uploadThumbnail(@RequestParam("file") MultipartFile file, @RequestParam("videoId") String videoId) {
+        this.videoService.uploadThumbnail(file, videoId);
+    }
+
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public VideoDto editVideoMetadata(@RequestBody VideoDto videoDto) {

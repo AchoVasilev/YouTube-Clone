@@ -24,8 +24,7 @@ public class VideoService {
     }
 
     public VideoDto editVideo(VideoDto videoDto) {
-        var video = this.videoRepository.findById(videoDto.getId())
-                .orElseThrow(() -> new EntityNotFoundException("Video not found " + videoDto.getId()));
+        var video = this.getVideo(videoDto.getId());
 
         video.setTitle(videoDto.getTitle());
         video.setDescription(videoDto.getDescription());
@@ -36,5 +35,19 @@ public class VideoService {
         this.videoRepository.save(video);
 
         return videoDto;
+    }
+
+    public void uploadThumbnail(MultipartFile file, String videoId) {
+        var video = this.getVideo(videoId);
+        var thumbnailUrl = this.fileService.uploadFile(file);
+
+        video.setThumbnailUrl(thumbnailUrl);
+
+        this.videoRepository.save(video);
+    }
+
+    private Video getVideo(String videoId) {
+        return this.videoRepository.findById(videoId)
+                .orElseThrow(() -> new EntityNotFoundException("Video not found " + videoId));
     }
 }
