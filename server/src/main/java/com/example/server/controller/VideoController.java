@@ -1,5 +1,6 @@
 package com.example.server.controller;
 
+import com.example.server.dto.VideoDto;
 import com.example.server.service.VideoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,5 +18,11 @@ public class VideoController {
     @ResponseStatus(HttpStatus.CREATED)
     public void uploadVideo(@RequestParam("file")MultipartFile file) {
         this.videoService.uploadVideo(file);
+    }
+
+    @PutMapping
+    @ResponseStatus(HttpStatus.OK)
+    public VideoDto editVideoMetadata(@RequestBody VideoDto videoDto) {
+        this.videoService.editVideo(videoDto);
     }
 }

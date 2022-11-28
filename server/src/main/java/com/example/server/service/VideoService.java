@@ -1,5 +1,7 @@
 package com.example.server.service;
 
+import com.example.server.dto.VideoDto;
+import com.example.server.exceptions.EntityNotFoundException;
 import com.example.server.model.Video;
 import com.example.server.repository.VideoRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,11 @@ public class VideoService {
         var video = new Video();
         video.setVideoUrl(videoUrl);
 
-        videoRepository.save(video);
+        this.videoRepository.save(video);
+    }
+
+    public void editVideo(VideoDto videoDto) {
+        var video = this.videoRepository.findById(videoDto.getId())
+                .orElseThrow(() -> new EntityNotFoundException("Video not found " + videoDto.getId()));
     }
 }
