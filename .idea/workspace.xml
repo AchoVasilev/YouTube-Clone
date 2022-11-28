@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="966bfe3b-fe26-4c17-bb99-fd09bcb0f13b" name="Changes" comment="" />
+    <list default="true" id="966bfe3b-fe26-4c17-bb99-fd09bcb0f13b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/config/WebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,6 +44,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -71,7 +81,7 @@
     "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "spring.configuration.checksum": "fa858ba4fe59840eb992fb3dbec4ebb1"
+    "spring.configuration.checksum": "850bde94a354c4afb65b245159ca0228"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -93,7 +103,10 @@
       </set>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.ServerApplication">
+    <configuration name="Angular Application (youtube-clone-client)" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
     <configuration name="ServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ACTIVE_PROFILES" />
       <module name="server" />
@@ -101,6 +114,16 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="Angular CLI Server (youtube-clone-client)" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/client/youtube-clone-client/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -113,6 +136,7 @@
       <updated>1669322107234</updated>
       <workItem from="1669322109521" duration="2344000" />
       <workItem from="1669325422671" duration="546000" />
+      <workItem from="1669571039897" duration="1768000" />
     </task>
     <servers />
   </component>
