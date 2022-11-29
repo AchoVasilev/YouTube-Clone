@@ -1,5 +1,6 @@
 package com.example.server.service;
 
+import com.example.server.dto.UploadVideoResponse;
 import com.example.server.dto.VideoDto;
 import com.example.server.exceptions.EntityNotFoundException;
 import com.example.server.model.Video;
@@ -14,13 +15,15 @@ public class VideoService {
     private final FileService fileService;
     private final VideoRepository videoRepository;
 
-    public void uploadVideo(MultipartFile file) {
+    public UploadVideoResponse uploadVideo(MultipartFile file) {
         var videoUrl = this.fileService.uploadFile(file);
 
         var video = new Video();
         video.setVideoUrl(videoUrl);
 
-        this.videoRepository.save(video);
+        var savedVideo = this.videoRepository.save(video);
+
+        return new UploadVideoResponse(savedVideo.getId(), savedVideo.getVideoUrl());
     }
 
     public VideoDto editVideo(VideoDto videoDto) {
@@ -37,13 +40,15 @@ public class VideoService {
         return videoDto;
     }
 
-    public void uploadThumbnail(MultipartFile file, String videoId) {
+    public String uploadThumbnail(MultipartFile file, String videoId) {
         var video = this.getVideo(videoId);
         var thumbnailUrl = this.fileService.uploadFile(file);
 
         video.setThumbnailUrl(thumbnailUrl);
 
         this.videoRepository.save(video);
+
+        return thumbnailUrl;
     }
 
     private Video getVideo(String videoId) {

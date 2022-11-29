@@ -1,5 +1,6 @@
 package com.example.server.controller;
 
+import com.example.server.dto.UploadVideoResponse;
 import com.example.server.dto.VideoDto;
 import com.example.server.service.VideoService;
 import lombok.RequiredArgsConstructor;
@@ -16,14 +17,14 @@ public class VideoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void uploadVideo(@RequestParam("file")MultipartFile file) {
-        this.videoService.uploadVideo(file);
+    public UploadVideoResponse uploadVideo(@RequestParam("file")MultipartFile file) {
+        return this.videoService.uploadVideo(file);
     }
 
     @PostMapping("/thumbnail")
     @ResponseStatus(HttpStatus.CREATED)
-    public void uploadThumbnail(@RequestParam("file") MultipartFile file, @RequestParam("videoId") String videoId) {
-        this.videoService.uploadThumbnail(file, videoId);
+    public String uploadThumbnail(@RequestParam("file") MultipartFile file, @RequestParam("videoId") String videoId) {
+        return this.videoService.uploadThumbnail(file, videoId);
     }
 
     @PutMapping
