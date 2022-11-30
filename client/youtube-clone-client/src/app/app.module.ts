@@ -1,7 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { MatButtonModule, MatIconModule, MatToolbarModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule, MatFormFieldModule, MatIconModule, MatOptionModule, MatSelectModule, MatToolbarModule } from '@angular/material';
+import { MatChipsModule } from '@angular/material/chips'
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxFileDropModule } from 'ngx-file-drop';
@@ -28,7 +29,12 @@ import { SaveVideoDetailsComponent } from './save-video-details/save-video-detai
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule,
+    ReactiveFormsModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
