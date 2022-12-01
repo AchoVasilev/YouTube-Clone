@@ -1,29 +1,35 @@
-import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Component } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
+import { VideoService } from '../service/video.service';
 
 @Component({
   selector: 'app-save-video-details',
   templateUrl: './save-video-details.component.html',
   styleUrls: ['./save-video-details.component.css']
 })
-export class SaveVideoDetailsComponent implements OnInit {
+export class SaveVideoDetailsComponent {
 
   savedVideoDetailsForm: FormGroup;
   title: FormControl = new FormControl('');
   description: FormControl = new FormControl('');
   videoStatus: FormControl = new FormControl('');
   tags: string[] = [];
+  selectedFile!: File;
+  selectedFileName?: string;
+  videoId: string;
+  fileSelected = false;
 
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService, private snackBar: MatSnackBar) {
+    this.videoId = this.activatedRoute.snapshot.params['videoId'];
     this.savedVideoDetailsForm = new FormGroup({
       title: this.title,
       description: this.description,
       videoStatus: this.videoStatus
     });
-  }
-
-  ngOnInit(): void {
   }
 
   addOnBlur = true;
@@ -49,20 +55,16 @@ export class SaveVideoDetailsComponent implements OnInit {
     }
   }
 
-  edit(tag: string, event: MatChipEditedEvent) {
-    const value = event.value.trim();
-
-    // Remove fruit if it no longer has a name
-    if (!value) {
-      this.remove(tag);
-      return;
-    }
-
-    // Edit existing fruit
-    const index = this.tags.indexOf(tag);
-    if (index > 0) {
-      this.tags[index] = value;
-    }
+  onFileSelected(event: Event) {
+    this.selectedFile = event?.target?.files[0];
+    this.selectedFileName = this.selectedFile?.name;
+    this.fileSelected = true;
   }
 
+  onUpload() {
+    this.videoService.uploadThumbnail(this.selectedFile, this.videoId)
+      .subscribe(data => {
+        this.snackBar.open("Thumbnail upload successful", "OK");
+      });
+  }
 }
