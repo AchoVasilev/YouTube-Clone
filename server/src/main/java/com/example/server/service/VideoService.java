@@ -55,4 +55,20 @@ public class VideoService {
         return this.videoRepository.findById(videoId)
                 .orElseThrow(() -> new EntityNotFoundException("Video not found " + videoId));
     }
+
+    public VideoDto getDetails(String videoId) {
+        var video = this.getVideo(videoId);
+
+        var videoDto = new VideoDto(
+                video.getId(),
+                video.getTitle(),
+                video.getDescription(),
+                video.getTags(),
+                video.getVideoUrl(),
+                video.getVideoStatus(),
+                video.getThumbnailUrl()
+        );
+
+        return videoDto;
+    }
 }
