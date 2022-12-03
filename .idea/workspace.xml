@@ -7,9 +7,10 @@
     <list default="true" id="966bfe3b-fe26-4c17-bb99-fd09bcb0f13b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/youtube-clone-client/src/app/save-video-details/save-video-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/youtube-clone-client/src/app/save-video-details/save-video-details.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/youtube-clone-client/src/app/save-video-details/save-video-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/youtube-clone-client/src/app/save-video-details/save-video-details.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/youtube-clone-client/src/app/service/video.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/youtube-clone-client/src/app/service/video.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/youtube-clone-client/src/app/video-player/video-player.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/youtube-clone-client/src/app/video-player/video-player.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/controller/VideoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/controller/VideoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/service/VideoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/service/VideoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/youtube-clone-client/src/app/video-player/video-player.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/youtube-clone-client/src/app/video-player/video-player.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

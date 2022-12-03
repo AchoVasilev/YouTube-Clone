@@ -5,6 +5,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { VideoService } from '../service/video.service';
+import { VideoDto } from '../model/video-dto';
 
 @Component({
   selector: 'app-save-video-details',
@@ -23,6 +24,7 @@ export class SaveVideoDetailsComponent {
   videoId: string;
   fileSelected = false;
   videoUrl: string = '';
+  thumbnailUrl: string = '';
 
   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService, private snackBar: MatSnackBar) {
     this.videoId = this.activatedRoute.snapshot.params['videoId'];
@@ -30,6 +32,7 @@ export class SaveVideoDetailsComponent {
     this.videoService.getVideo(this.videoId)
       .subscribe(data => {
         this.videoUrl = data.videoUrl;
+        this.thumbnailUrl = data.thumbnailUrl;
       });
 
     this.savedVideoDetailsForm = new FormGroup({
@@ -63,6 +66,7 @@ export class SaveVideoDetailsComponent {
   }
 
   onFileSelected(event: Event) {
+    // @ts-ignore
     this.selectedFile = event?.target?.files[0];
     this.selectedFileName = this.selectedFile?.name;
     this.fileSelected = true;
@@ -72,6 +76,23 @@ export class SaveVideoDetailsComponent {
     this.videoService.uploadThumbnail(this.selectedFile, this.videoId)
       .subscribe(data => {
         this.snackBar.open("Thumbnail upload successful", "OK");
+      });
+  }
+
+  saveVideo() {
+    const videoMetadata: VideoDto = {
+      id: this.videoId,
+      title: this.savedVideoDetailsForm.get('title')?.value,
+      description: this.savedVideoDetailsForm.get('description')?.value,
+      videoUrl: this.savedVideoDetailsForm.get('videoUrl')?.value,
+      videoStatus: this.savedVideoDetailsForm.get('videoStatus')?.value,
+      thumbnailUrl: this.thumbnailUrl,
+      tags: this.tags
+    };
+
+    this.videoService.saveVideo(videoMetadata)
+      .subscribe(data => {
+        this.snackBar.open("Video metadata updated successfully", "OK");
       });
   }
 }

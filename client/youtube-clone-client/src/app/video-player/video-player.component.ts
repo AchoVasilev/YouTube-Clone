@@ -5,13 +5,10 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './video-player.component.html',
   styleUrls: ['./video-player.component.css']
 })
-export class VideoPlayerComponent implements OnInit {
+export class VideoPlayerComponent {
 
   @Input()
   videoUrl: string = '';
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
