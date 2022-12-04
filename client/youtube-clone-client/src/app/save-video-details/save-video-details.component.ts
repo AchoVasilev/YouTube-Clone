@@ -87,7 +87,10 @@ export class SaveVideoDetailsComponent {
       videoUrl: this.savedVideoDetailsForm.get('videoUrl')?.value,
       videoStatus: this.savedVideoDetailsForm.get('videoStatus')?.value,
       thumbnailUrl: this.thumbnailUrl,
-      tags: this.tags
+      tags: this.tags,
+      viewsCount: 0,
+      dislikesCount: 0,
+      likesCount: 0
     };
 
     this.videoService.saveVideo(videoMetadata)
