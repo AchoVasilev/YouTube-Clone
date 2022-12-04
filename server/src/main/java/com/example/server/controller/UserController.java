@@ -4,9 +4,7 @@ import com.example.server.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/user")
@@ -22,5 +20,15 @@ public class UserController {
         this.userService.registerUser(jwt.getTokenValue());
 
         return "Successful registration";
+    }
+
+    @PostMapping("/{userId}/subscribe")
+    public void subscribeToUser(@PathVariable("userId") String userId) {
+        this.userService.subscribeToUser(userId);
+    }
+
+    @PostMapping("/{userId}/unsubscribe")
+    public void unsubscribeFromUser(@PathVariable("userId") String userId) {
+        this.userService.unsubscribeFromUser(userId);
     }
 }
