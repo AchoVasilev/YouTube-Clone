@@ -34,4 +34,16 @@ export class VideoService {
   saveVideo(videoMetadata: VideoDto): Observable<VideoDto> {
     return this.httpClient.put<VideoDto>("http://localhost:8080/api/videos", videoMetadata);
   }
+
+  getAllVideos(): Observable<VideoDto[]> {
+    return this.httpClient.get<VideoDto[]>("http://localhost:8080/videos");
+  }
+
+  likeVideo(videoId: string): Observable<VideoDto> {
+    return this.httpClient.post<VideoDto>(`http://localhost:8080/api/videos/${videoId}/like`, null);
+  }
+
+  dislikeVideo(videoId: string): Observable<VideoDto> {
+    return this.httpClient.post<VideoDto>(`http://localhost:8080/api/videos/${videoId}/dislike`, null);
+  }
 }
