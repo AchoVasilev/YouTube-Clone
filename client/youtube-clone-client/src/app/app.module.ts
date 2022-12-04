@@ -27,6 +27,7 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
 import { AuthConfigModule } from './auth/auth-config.module';
 import { AuthInterceptor } from 'angular-auth-oidc-client';
 import { VideoDetailsComponent } from './video-details/video-details.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { VideoDetailsComponent } from './video-details/video-details.component';
     HeaderComponent,
     SaveVideoDetailsComponent,
     VideoPlayerComponent,
-    VideoDetailsComponent
+    VideoDetailsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
