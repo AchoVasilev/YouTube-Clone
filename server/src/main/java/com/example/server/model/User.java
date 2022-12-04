@@ -26,10 +26,20 @@ public class User {
     private Set<String> likedVideos;
     private Set<String> dislikedVideos;
 
+    public void subscribeToUser(String userId) {
+        this.subscribedToUsers.add(userId);
+    }
+
+    public void addToSubscribers(String id) {
+        this.subscribers.add(id);
+    }
+
     public User() {
         this.likedVideos = ConcurrentHashMap.newKeySet();
         this.dislikedVideos = ConcurrentHashMap.newKeySet();
         this.videoHistory = ConcurrentHashMap.newKeySet();
+        this.subscribers = ConcurrentHashMap.newKeySet();
+        this.subscribedToUsers = ConcurrentHashMap.newKeySet();
     }
 
     public void addToLikedVideos(String videoId) {
