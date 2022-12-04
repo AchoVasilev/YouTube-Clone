@@ -7,6 +7,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Set;
+
 @RestController
 @RequestMapping("/api/user")
 @RequiredArgsConstructor
@@ -34,5 +36,11 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public void unsubscribeFromUser(@PathVariable("userId") String userId) {
         this.userService.unsubscribeFromUser(userId);
+    }
+
+    @GetMapping("/{userId}/history")
+    @ResponseStatus(HttpStatus.OK)
+    public Set<String> userHistory(@PathVariable("userId") String userId) {
+        return this.userService.getUserHistory(userId);
     }
 }

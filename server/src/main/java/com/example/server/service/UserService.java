@@ -3,7 +3,6 @@ package com.example.server.service;
 import com.example.server.dto.UserInfoDto;
 import com.example.server.exceptions.EntityNotFoundException;
 import com.example.server.model.User;
-import com.example.server.model.Video;
 import com.example.server.repository.UserRepository;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,6 +17,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -63,9 +64,8 @@ public class UserService {
         String sub = ((Jwt) (SecurityContextHolder.getContext().getAuthentication().getPrincipal()))
                 .getClaim("sub");
 
-        return this.userRepository
-                .findBySub(sub)
-                .orElseThrow(() -> new EntityNotFoundException("Cannot find user with sub - " + sub));
+        return getUserById(this.userRepository
+                .findBySub(sub), "Cannot find user with sub - " + sub);
     }
 
     public void addToLikedVideos(String videoId, User user) {
@@ -112,8 +112,7 @@ public class UserService {
         var currentUser = this.getCurrentUser();
         currentUser.subscribeToUser(userId);
 
-        var user = this.userRepository.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+        var user = getUserById(this.userRepository.findById(userId), "User not found");
 
         user.addToSubscribers(currentUser.getId());
 
@@ -125,11 +124,20 @@ public class UserService {
         var currentUser = this.getCurrentUser();
         currentUser.removeSubscription(userId);
 
-        var user = this.userRepository.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+        var user = getUserById(this.userRepository.findById(userId), "User not found");
         user.removeFromSubscribers(currentUser.getId());
 
         this.userRepository.save(currentUser);
         this.userRepository.save(user);
+    }
+
+    public Set<String> getUserHistory(String userId) {
+        return getUserById(this.userRepository.findById(userId), "User not found")
+                .getVideoHistory();
+    }
+
+    private User getUserById(Optional<User> userRepository, String User_not_found) {
+        return userRepository
+                .orElseThrow(() -> new EntityNotFoundException(User_not_found));
     }
 }
