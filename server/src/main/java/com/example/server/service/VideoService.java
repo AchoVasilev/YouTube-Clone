@@ -1,13 +1,17 @@
 package com.example.server.service;
 
+import com.example.server.dto.CommentDto;
 import com.example.server.dto.UploadVideoResponse;
 import com.example.server.dto.VideoDto;
 import com.example.server.exceptions.EntityNotFoundException;
+import com.example.server.model.Comment;
 import com.example.server.model.Video;
 import com.example.server.repository.VideoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -132,5 +136,23 @@ public class VideoService {
                 video.getDislikes().get(),
                 video.getViewCount().get()
         );
+    }
+
+    public void addComment(String videoId, CommentDto commentDto) {
+        var video = this.getVideo(videoId);
+        var comment = new Comment();
+        comment.setText(commentDto.getCommentText());
+        comment.setAuthorId(commentDto.getAuthorId());
+
+        video.addComment(comment);
+        this.videoRepository.save(video);
+    }
+
+    public List<CommentDto> getCommentsByVideoId(String videoId) {
+        return this.getVideo(videoId)
+                .getComments()
+                .stream()
+                .map(c -> new CommentDto(c.getText(), c.getAuthorId()))
+                .toList();
     }
 }
