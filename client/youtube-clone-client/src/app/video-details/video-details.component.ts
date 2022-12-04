@@ -17,6 +17,8 @@ export class VideoDetailsComponent {
   likesCount: number = 0;
   dislikesCount: number = 0;
   viewsCount: number = 0;
+  showSubscribeButton: boolean = true;
+  showUnSubscribeButton: boolean = !this.showSubscribeButton;
 
   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService) {
     this.videoId = this.activatedRoute.snapshot.params['videoId'];
@@ -35,4 +37,23 @@ export class VideoDetailsComponent {
       });
   }
 
+  likeVideo() {
+    this.videoService.likeVideo(this.videoId)
+      .subscribe(data => {
+        this.likesCount = data.likesCount;
+        this.dislikesCount = data.dislikesCount;
+      });
+  }
+
+  dislikeVideo() {
+    this.videoService.dislikeVideo(this.videoId)
+      .subscribe(data => {
+        this.likesCount = data.likesCount;
+        this.dislikesCount = data.dislikesCount;
+      });
+  }
+
+  subscribeToUser() {
+
+  }
 }
