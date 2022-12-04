@@ -61,4 +61,11 @@ public class User {
     public void addToVideoHistory(String id) {
         this.videoHistory.add(id);
     }
+    public void removeSubscription(String userId) {
+        this.subscribedToUsers.remove(userId);
+    }
+
+    public void removeFromSubscribers(String id) {
+        this.subscribers.remove(id);
+    }
 }
