@@ -1,1 +1,9 @@
-<p>subscriptions works!</p>
+<div fxLayout="row wrap">
+    Featured videos
+</div>
+
+<div fxLayout="row wrap" fxLayout="12px grid">
+    <div fxFlex="30%" *ngFor="">
+        <app-video-card></app-video-card>
+    </div>
+</div>

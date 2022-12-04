@@ -20,6 +20,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
+import { MatCardModule } from "@angular/material/card";
 import { VgCoreModule } from "@videogular/ngx-videogular/core";
 import { VgControlsModule } from "@videogular/ngx-videogular/controls";
 import { VgOverlayPlayModule } from "@videogular/ngx-videogular/overlay-play";
@@ -35,6 +36,7 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
 import { LikedVideosComponent } from './liked-videos/liked-videos.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FeaturedComponent } from './featured/featured.component';
+import { VideoCardComponent } from './video-card/video-card.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { FeaturedComponent } from './featured/featured.component';
     SubscriptionsComponent,
     LikedVideosComponent,
     SidebarComponent,
-    FeaturedComponent
+    FeaturedComponent,
+    VideoCardComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,8 @@ import { FeaturedComponent } from './featured/featured.component';
     VgBufferingModule,
     MatSnackBarModule,
     AuthConfigModule,
-    MatListModule
+    MatListModule,
+    MatCardModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
