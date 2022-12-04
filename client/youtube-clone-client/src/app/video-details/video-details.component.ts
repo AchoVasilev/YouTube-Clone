@@ -14,6 +14,9 @@ export class VideoDetailsComponent {
   videoTitle: string = '';
   videoDescription: string = '';
   tags: string[] = [];
+  likesCount: number = 0;
+  dislikesCount: number = 0;
+  viewsCount: number = 0;
 
   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService) {
     this.videoId = this.activatedRoute.snapshot.params['videoId'];
@@ -24,6 +27,9 @@ export class VideoDetailsComponent {
         this.videoTitle = data.title;
         this.videoDescription = data.description;
         this.tags = data.tags;
+        this.likesCount = data.likesCount;
+        this.dislikesCount = data.dislikesCount;
+        this.viewsCount = data.viewsCount;
 
         this.videoAvailable = true;
       });

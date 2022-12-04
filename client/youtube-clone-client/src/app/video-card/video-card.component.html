@@ -1,8 +1,8 @@
-<mat-card class="card">
-    <img src="" alt="" mat-card-image class="card-header-image">
+<mat-card class="card" routerLink="/video-details/{{video?.id}}">
+    <img [src]="video?.thumbnailUrl" alt="" mat-card-image class="card-header-image">
     <mat-card-header>
         <div mat-card-avatar></div>
-        <mat-card-title></mat-card-title>
-        <mat-card-subtitle></mat-card-subtitle>
+        <mat-card-title>{{video?.title}}</mat-card-title>
+        <mat-card-subtitle>{{video?.videoStatus}}</mat-card-subtitle>
     </mat-card-header>
 </mat-card>

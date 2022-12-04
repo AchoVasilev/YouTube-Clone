@@ -3,7 +3,7 @@
 </div>
 
 <div fxLayout="row wrap" fxLayout="12px grid">
-    <div fxFlex="30%" *ngFor="">
-        <app-video-card></app-video-card>
+    <div fxFlex="30%" *ngFor="let video of featuredVideos">
+        <app-video-card [video]="video"></app-video-card>
     </div>
 </div>
