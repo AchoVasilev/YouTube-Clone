@@ -18,6 +18,8 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSelectModule } from "@angular/material/select";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatListModule } from "@angular/material/list";
 import { VgCoreModule } from "@videogular/ngx-videogular/core";
 import { VgControlsModule } from "@videogular/ngx-videogular/controls";
 import { VgOverlayPlayModule } from "@videogular/ngx-videogular/overlay-play";
@@ -32,6 +34,7 @@ import { HistoryComponent } from './history/history.component';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 import { LikedVideosComponent } from './liked-videos/liked-videos.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { FeaturedComponent } from './featured/featured.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HistoryComponent,
     SubscriptionsComponent,
     LikedVideosComponent,
-    SidebarComponent
+    SidebarComponent,
+    FeaturedComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +64,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MatFormFieldModule,
     MatSelectModule,
     MatOptionModule,
+    MatSidenavModule,
     ReactiveFormsModule,
     MatChipsModule,
     BrowserAnimationsModule,
@@ -68,7 +73,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     VgOverlayPlayModule,
     VgBufferingModule,
     MatSnackBarModule,
-    AuthConfigModule
+    AuthConfigModule,
+    MatListModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
