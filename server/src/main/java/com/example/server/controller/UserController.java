@@ -26,4 +26,9 @@ public class UserController {
     public void subscribeToUser(@PathVariable("userId") String userId) {
         this.userService.subscribeToUser(userId);
     }
+
+    @PostMapping("/{userId}/unsubscribe")
+    public void unsubscribeFromUser(@PathVariable("userId") String userId) {
+        this.userService.unsubscribeFromUser(userId);
+    }
 }

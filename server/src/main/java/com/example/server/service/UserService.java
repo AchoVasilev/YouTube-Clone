@@ -120,4 +120,16 @@ public class UserService {
         this.userRepository.save(currentUser);
         this.userRepository.save(user);
     }
+
+    public void unsubscribeFromUser(String userId) {
+        var currentUser = this.getCurrentUser();
+        currentUser.removeSubscription(userId);
+
+        var user = this.userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+        user.removeFromSubscribers(currentUser.getId());
+
+        this.userRepository.save(currentUser);
+        this.userRepository.save(user);
+    }
 }
