@@ -38,4 +38,16 @@ public class VideoController {
     public VideoDto getVideoDetails(@PathVariable("id") String videoId) {
         return this.videoService.getDetails(videoId);
     }
+
+    @PostMapping("/{videoId}/like")
+    @ResponseStatus(HttpStatus.OK)
+    public VideoDto likeVideo(@PathVariable("videoId") String videoId) {
+        return this.videoService.likeVideo(videoId);
+    }
+
+    @PostMapping("/{videoId}/dislike")
+    @ResponseStatus(HttpStatus.OK)
+    public VideoDto dislikeVideo(@PathVariable("videoId") String videoId) {
+        return this.videoService.dislikeVideo(videoId);
+    }
 }
