@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -24,6 +24,9 @@ import { VgOverlayPlayModule } from "@videogular/ngx-videogular/overlay-play";
 import { VgBufferingModule } from "@videogular/ngx-videogular/buffering";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { VideoPlayerComponent } from './video-player/video-player.component';
+import { AuthConfigModule } from './auth/auth-config.module';
+import { AuthInterceptor } from 'angular-auth-oidc-client';
+import { VideoDetailsComponent } from './video-details/video-details.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
     UploadVideoComponent,
     HeaderComponent,
     SaveVideoDetailsComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    VideoDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,9 +57,12 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    AuthConfigModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
